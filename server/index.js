@@ -8,7 +8,11 @@ dotenv.config();
 const app = express();
 
 // Middleware
-app.use(cors());
+app.use(cors({
+  origin: "*",
+  methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
+  allowedHeaders: ["Content-Type", "Authorization"]
+}));
 app.use(express.json());
 
 // MongoDB Connection
@@ -28,18 +32,12 @@ app.use(async (req, res, next) => {
 
 // Root Route
 app.get("/", (req, res) => {
-  res.json({
-    success: true,
-    message: "FitTech Backend API Running"
-  });
+  res.json({ success: true, message: "FitTech Backend API Running" });
 });
 
 // Health Check
 app.get("/api/health", (req, res) => {
-  res.json({
-    status: "OK",
-    time: new Date()
-  });
+  res.json({ status: "OK", time: new Date() });
 });
 
 // Routes
