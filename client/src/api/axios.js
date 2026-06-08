@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const api = axios.create({
-  baseURL: "https://fittech-api.onrender.com/api", // ← your Render URL
+  baseURL: "https://fittech-m177.onrender.com",
 });
 
 api.interceptors.request.use((config) => {
